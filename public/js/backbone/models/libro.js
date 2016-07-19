@@ -29,10 +29,31 @@
 // sincronizacion de modelos: se sincroniza con los datos del servidor para ello definimos la propiedad urlRoot
 // es recomendable no utilizar esta propiedad a menos qeu el modelo no este dentro de una coleccion
 
-var Libro = Backbone.Model.extend({
-    urlRoot: '/libros',
-});
+var app = app || {};
 
+app.Libro = Backbone.Model.extend({
+
+    urlRoot: 'libros/',
+
+    defaults: {
+        autor: 'Desconocido'
+    },
+
+    initialize: function() {
+        console.log('Se ha creado una nueva instancia del Modelo Libro.');
+
+        this.on('change', function(){
+            console.log('El modelo ha sido modificado.');
+        });
+    },
+
+    validate: function(atributos) {
+        if(!atributos.titulo) {
+            return 'Debe tener un titulo.';
+        }
+    }
+
+});
 /*
 Optiene los datos del servidor
 var libroUno = new Libro({id:'1',});

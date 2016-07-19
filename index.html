@@ -11,18 +11,31 @@
 		}
 	</style>
 </head>
-<body>
+<body id='app'>
 
-	<div class="vista">
-		<div class="cambiarColor">Cambiar color del texto</div>
+	<div class="libros">
+		<h1>Libros</h1>
 	</div>
+
+	<!-- Definir un template:
+		var templateMuestra = _.template($('#tplMuestra').html());
+		$('body').append(templateMuestra);
+	 -->
+
+	 <script type="text/template" id="tplMostrarLibro">
+	 	<h2><%= titulo %></h2>
+	 	<p><%= autor %></p>
+	 	<small><%= categoria %></small>
+	 	<hr>
+	 </script>
 	
 	<script src="js/vendor/jquery.min.js"></script>
 	<script src="js/vendor/bootstrap.min.js"></script>
 	<script src="js/vendor/underscore-1.8.3.js"></script>
 	<script src="js/vendor/backbone-1.3.3.js"></script>
+
 	<script src="js/backbone/models/libro.js"></script>
-	<script src="js/backbone/views/libreria.js"></script>
 	<script src="js/backbone/collections/libros.js"></script>
+	<script src="js/backbone/views/libreria.js"></script>
 </body>
 </html>

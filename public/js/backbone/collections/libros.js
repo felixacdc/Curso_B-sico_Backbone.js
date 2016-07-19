@@ -1,9 +1,14 @@
 // las colecciones en un conjunto ordenado de modelos, estos extienden de Backbone.collection
 // La principal funcionalidad que tienen las colecciones es agregar o eliminar modelos
+
+var app = app || {};
+
 var LibrosCollection = Backbone.Collection.extend({
-    model: Libro,
+    model: app.Libro,
     url: '/libros'
 });
+
+app.libros = new LibrosCollection();
 
 /*
 var libros = new LibrosCollection();

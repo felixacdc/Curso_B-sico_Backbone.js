@@ -16,15 +16,15 @@
         this.$el.html('<h1>Metodo render en accion.</h1>');
     }
 });*/
-var Libreria = Backbone.View.extend({
-    el: '.vista',
-    events: {
-        'click .cambiarColor': 'cambiarColor'
-    },
-    cambiarColor: function() {
-        this.$el.css('color', 'red');
-    }
-});
+// var Libreria = Backbone.View.extend({
+//     el: '.vista',
+//     events: {
+//         'click .cambiarColor': 'cambiarColor'
+//     },
+//     cambiarColor: function() {
+//         this.$el.css('color', 'red');
+//     }
+// });
 
 // var vista = new Libreria();
 // el objeto principal de una vista es "el" ya que contiene toda la vista dentro de un elemento DOM
@@ -50,3 +50,28 @@ vista.$el.append('<strong>Genial</strong>');
 // el metodo render es el mas importante ya que ayuda a renderizar la vista de nuestra pagina
 // el metodo initialize se registra cada vez que creamos una vista
 // los eventos se registran dentro de un hash la sintaxis es 'Nombre_de_evento selector': 'funcion_callback'
+var app = app || {};
+
+app.Libreria = Backbone.View.extend({
+    el: '#app',
+    initialize: function() {
+        app.libros.on('add', this.mostrarLibro);
+        app.libros.fetch();
+    },
+
+    mostrarLibro: function(modelo) {
+        var vista = new MostrarLibroView({model:modelo});
+        $(".libros").append( vista.render().$el );
+    }
+});
+
+var MostrarLibroView = Backbone.View.extend({
+    template: _.template( $("#tplMostrarLibro").html() ),
+
+    render: function() {
+        this.$el.html( this.template( this.model.toJSON() ) );
+        return this;
+    }
+});
+
+var appView = new app.Libreria();
