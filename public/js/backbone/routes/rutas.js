@@ -1,3 +1,5 @@
+var app = app || {};
+
 var rutas = Backbone.Router.extend({
     routes: {
         'books': 'libros',
@@ -11,6 +13,4 @@ var rutas = Backbone.Router.extend({
     }
 });
 
-var route = new rutas();
-Backbone.history.start();
-Backbone.history.navigate('books');
+app.route = new rutas();

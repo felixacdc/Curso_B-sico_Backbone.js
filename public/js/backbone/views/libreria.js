@@ -60,12 +60,12 @@ app.Libreria = Backbone.View.extend({
     },
 
     mostrarLibro: function(modelo) {
-        var vista = new MostrarLibroView({model:modelo});
+        var vista = new app.MostrarLibroView({model:modelo});
         $(".libros").append( vista.render().$el );
     }
 });
 
-var MostrarLibroView = Backbone.View.extend({
+app.MostrarLibroView = Backbone.View.extend({
     template: _.template( $("#tplMostrarLibro").html() ),
 
     events: {
@@ -81,5 +81,3 @@ var MostrarLibroView = Backbone.View.extend({
         Backbone.history.navigate('books/' + this.model.get('id'), {trigger: true});
     }
 });
-
-var appView = new app.Libreria();
