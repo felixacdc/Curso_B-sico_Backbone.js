@@ -68,9 +68,17 @@ app.Libreria = Backbone.View.extend({
 var MostrarLibroView = Backbone.View.extend({
     template: _.template( $("#tplMostrarLibro").html() ),
 
+    events: {
+        'click h2': 'detalle'
+    },
+
     render: function() {
         this.$el.html( this.template( this.model.toJSON() ) );
         return this;
+    },
+
+    detalle: function() {
+        Backbone.history.navigate('books/' + this.model.get('id'), {trigger: true});
     }
 });
 
