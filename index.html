@@ -1,50 +1,117 @@
+
 <!doctype html>
 <html lang="es">
 <head>
-	<meta charset="UTF-8">
+  <meta charset="UTF-8">
 	<title>Curso Básico de Backbone.js</title>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="css/bootstrap.css">
+	
+	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<style>
 		body {
 			font-family: 'Open Sans', Arial;
 		}
 	</style>
 </head>
-<body id='app'>
 
-	<div class="libros">
-		<h1>Libros</h1>
+<body id="app">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="page-header">
+				  <h1>Libros</h1>
+				</div>
+			</div>
+		</div>
+		<div id="libros" class="row">
+			<div class="col-md-8">
+				<ul class="list-group libros">
+				</ul>
+			</div>
+			<div class="col-md-4">
+				<div class="panel panel-default">
+				  <div class="panel-heading"><b>Registrar Nuevo Libro</b></div>
+				  <div class="panel-body">
+				    <form role="form">
+					  <div class="form-group">
+					    <label for="exampleInputEmail1">Título:</label>
+					    <input type="text" class="form-control" id="inputTitulo" placeholder="Título">
+					  </div>
+					  <div class="form-group">
+					    <label for="exampleInputPassword1">Categoría:</label>
+					    <input type="text" class="form-control" id="inputCategoria" placeholder="Categoría">
+					  </div>
+					  <div class="form-group">
+					    <label for="exampleInputPassword1">Autor:</label>
+					    <input type="text" class="form-control" id="inputAutor" placeholder="Autor">
+					  </div>	  
+					</form>
+				  </div>
+				</div>
+				<button class="btn btn-success" id="crear">Crear</button>
+			</div>
+			
+		</div>
+		
 	</div>
-
-	<div class="detalle">
-		<h1>Detalle Libro</h1>
-	</div>
-
-	<!-- Definir un template:
-		var templateMuestra = _.template($('#tplMuestra').html());
-		$('body').append(templateMuestra);
-	 -->
-
-	 <script type="text/template" id="tplMostrarLibro">
-	 	<h2><%= titulo %></h2>
-	 	<p><%= autor %></p>
-	 	<small><%= categoria %></small>
-	 	<hr>
-	 </script>
-
-	 <script type="text/template" id="tplDetalleLibro">
-	 	
-	 </script>
 	
+
+	<div class="detalle"></div>
+
+	
+	
+	<script type="text/template" id="tplMostrarLibro">
+		<h4 class="list-group-item-heading"><b><%= titulo%></b></h4>
+		<div class="row">
+			<div class="col-md-8">
+		    	<p class="list-group-item-text"><%= autor%></p>
+		    	<p class="list-group-item-text"><%= categoria%></p>
+			</div>
+			<div class="col-md-4">
+				<button id="detalle" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Detalle</button>
+				<button id="eliminar" class="btn btn-primary">Eliminar</button>
+			</div>
+		</div>
+		
+	</script>
+	
+	<script type="text/template" id="tplDetalleLibro">
+
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		        <h4 class="modal-title" id="myModalLabel"><b>Libro: </b><%= titulo%></h4>
+		      </div>
+		      <div class="modal-body">
+		        <h4><%= categoria%></h4>
+				
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-primary atrasLibros" data-dismiss="modal">Atras</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	</script>
+
+	<script>
+		window.stade = '';
+		window.libroID = '';
+	</script>
+
 	<script src="js/vendor/jquery.min.js"></script>
 	<script src="js/vendor/bootstrap.min.js"></script>
 	<script src="js/vendor/underscore-1.8.3.js"></script>
 	<script src="js/vendor/backbone-1.3.3.js"></script>
-
+	
+	<!-- App Backbone.js -->
 	<script src="js/backbone/models/libro.js"></script>
 	<script src="js/backbone/collections/libros.js"></script>
 	<script src="js/backbone/views/libreria.js"></script>
 	<script src="js/backbone/routes/rutas.js"></script>
+	<script src="js/backbone/app.js"></script>
+	<!--<script src="js/backbone/collections/libros.js"></script>-->
 </body>
 </html>

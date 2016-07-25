@@ -2,14 +2,15 @@ var app = app || {};
 
 var rutas = Backbone.Router.extend({
     routes: {
-        'books': 'libros',
+        '': 'libros',
         'books/:id': 'detalle'
     },
     detalle: function(id) {
-        console.log(id);
+        window.libroID = id;
+        window.stade = 'detalle';
     },
     libros: function() {
-        console.log("book");
+        window.stade = 'libro';
     }
 });
 

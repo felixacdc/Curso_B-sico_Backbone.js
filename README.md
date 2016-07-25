@@ -9,4 +9,7 @@ Se trata de una heramienta muy indicada en aplicaciones de una sola página, aun
 Utilizando palabras sencillas, BackboneJS es un conjunto de objetos que tienen métodos (o funciones, si lo prefieres llamar así) que van a proveer de estructura a nuestro código, facilitar el trabajo con datos, vistas para producir nuestro HTML, las interacciones para implementar comportamientos que deba realizar frente a acciones del usuario y los servicios para comunicar con cualquier tecnología que usemos del lado del servidor, ya sea NodeJS, PHP, Ruby, .NET, etc.
 
 ### Las dependencias de Backbone.js son:
-Jquery.js y underscore.js
+Jquery.js y underscore.js <br><br>
+
+- [x] Curso Finalizado
+
